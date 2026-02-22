@@ -78,86 +78,86 @@ export interface SiteConfig {
 }
 
 // ============================================================================
-// FundingZest Configuration
+// TexasLoanGuide Configuration
 // ============================================================================
 
 export const siteConfig: SiteConfig = {
-  name: "FundingZest",
-  domain: "fundingzest.com",
-  url: "https://fundingzest.com",
-  tagline: "Compare Personal Loans & Payday Loans Online",
+  name: "TexasLoanGuide",
+  domain: "texasloanguide.com",
+  url: "https://texasloanguide.com",
+  tagline: "Compare loan options with TexasLoanGuide",
   description:
-    "Compare personal loan and payday loan options from FundingZest's network of lenders. Bad credit considered. Apply in minutes, funds as soon as same day.",
+    "TexasLoanGuide connects you with lenders offering competitive rates. Compare options, check rates, and apply — all in one place.",
 
   emails: {
-    support: "support@fundingzest.com",
-    privacy: "privacy@fundingzest.com",
-    legal: "legal@fundingzest.com",
+    support: "support@texasloanguide.com",
+    privacy: "privacy@texasloanguide.com",
+    legal: "legal@texasloanguide.com",
   },
 
   variant: "sidebar",
 
   authors: [
     {
-      slug: "sarah-mitchell",
-      name: "Sarah Mitchell",
+      slug: "nicole-taylor",
+      name: "Nicole Taylor",
       credentials: "CFP",
       title: "Certified Financial Planner",
-      bio: "Sarah Mitchell is a Certified Financial Planner (CFP) with over 10 years of experience in personal finance and consumer lending. She specializes in helping consumers understand short-term lending products, compare loan options, and make informed borrowing decisions. Sarah reviews all financial content on FundingZest for accuracy, regulatory compliance, and consumer protection.",
+      bio: "Nicole Taylor is a Certified Financial Planner (CFP) specializing in consumer lending, personal finance, and financial education. Nicole Taylor reviews all financial content on TexasLoanGuide for accuracy and consumer protection.",
       expertise: [
         "Personal finance and budgeting",
         "Consumer lending and credit products",
-        "State lending regulations",
         "Financial literacy education",
         "Debt management strategies",
+        "Loan comparison and analysis",
       ],
-      education: "B.S. Finance, University of Michigan",
+      education: "B.S. Finance, University of Florida",
       linkedin: "https://linkedin.com",
     },
     {
-      slug: "james-carter",
-      name: "James Carter",
+      slug: "emily-johnson",
+      name: "Emily Johnson",
+      credentials: "CPA",
+      title: "Certified Public Accountant",
+      bio: "Emily Johnson is a Certified Public Accountant (CPA) specializing in consumer lending, personal finance, and financial education. Emily Johnson reviews all financial content on TexasLoanGuide for accuracy and consumer protection.",
+      expertise: [
+        "Personal finance and budgeting",
+        "Consumer lending and credit products",
+        "Financial literacy education",
+        "Debt management strategies",
+        "Loan comparison and analysis",
+      ],
+      education: "B.S. Accounting, Indiana University",
+      linkedin: "https://linkedin.com",
+    },
+    {
+      slug: "daniel-harris",
+      name: "Daniel Harris",
       credentials: "CFA",
       title: "Chartered Financial Analyst",
-      bio: "James Carter is a Chartered Financial Analyst (CFA) with expertise in consumer credit markets, risk assessment, and financial product analysis. He brings 8 years of experience in financial services, including roles at consumer lending institutions and financial advisory firms. James contributes in-depth analyses of loan products, APR calculations, and market trends for FundingZest.",
+      bio: "Daniel Harris is a Chartered Financial Analyst (CFA) specializing in consumer lending, personal finance, and financial education. Daniel Harris reviews all financial content on TexasLoanGuide for accuracy and consumer protection.",
       expertise: [
-        "Consumer credit analysis",
-        "APR and fee structure analysis",
-        "Financial product comparison",
-        "Risk assessment",
-        "Market trend analysis",
+        "Personal finance and budgeting",
+        "Consumer lending and credit products",
+        "Financial literacy education",
+        "Debt management strategies",
+        "Loan comparison and analysis",
       ],
-      education: "M.B.A. Finance, NYU Stern School of Business",
+      education: "M.S. Finance, Georgetown University",
       linkedin: "https://linkedin.com",
-    },
-    {
-      slug: "maria-gonzalez",
-      name: "Maria Gonzalez",
-      credentials: "AFC",
-      title: "Accredited Financial Counselor",
-      bio: "Maria Gonzalez is an Accredited Financial Counselor (AFC) focused on consumer advocacy and financial education. With 7 years of experience counseling individuals on borrowing decisions, debt management, and financial planning, she ensures FundingZest's content prioritizes consumer interests. Maria is passionate about helping underserved communities access fair financial products.",
-      expertise: [
-        "Consumer financial counseling",
-        "Debt management and repayment strategies",
-        "Financial education and literacy",
-        "Consumer protection regulations",
-        "Underserved community financial access",
-      ],
-      education: "M.A. Financial Planning, Kansas State University",
-      linkedin: "https://linkedin.com",
-    },
+    }
   ],
 
   niche: {
-    type: "general",
-    focusStates: [],
+    type: "state-specific",
+    focusStates: ["texas"],
     focusLoanTypes: [],
-    includeCityPages: false,
+    includeCityPages: true,
   },
 
   voice: {
-    tone: "professional-helpful",
-    companyDescriptor: "loan comparison service",
+    tone: "casual-friendly",
+    companyDescriptor: "loan comparison platform",
   },
 
   social: {
@@ -174,7 +174,7 @@ export const siteConfig: SiteConfig = {
 };
 
 // ============================================================================
-// Convenience exports (for backward compatibility during refactor)
+// Convenience exports
 // ============================================================================
 
 export const SITE_NAME = siteConfig.name;
