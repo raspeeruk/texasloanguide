@@ -1,4 +1,5 @@
 import type { StateInfo } from "@/types/state";
+import { siteConfig } from "@/lib/site.config";
 import statesData from "../../../public/data/states.json";
 
 const STATES: StateInfo[] = statesData as StateInfo[];
@@ -13,11 +14,32 @@ export function getPublishedStates(): StateInfo[] {
   return STATES.filter((s) => s.published);
 }
 
+/**
+ * States relevant to this site's niche.
+ * If focusStates is set (e.g., ["texas"]), returns only those states.
+ * If empty, returns all published states (general sites).
+ */
+export function getSiteStates(): StateInfo[] {
+  const focus = siteConfig.niche.focusStates;
+  if (focus.length > 0) {
+    return STATES.filter((s) => focus.includes(s.slug));
+  }
+  return getPublishedStates();
+}
+
+export function getSiteStateSlugs(): string[] {
+  return getSiteStates().map((s) => s.slug);
+}
+
 export function getStateBySlug(slug: string): StateInfo | undefined {
   return STATES.find((s) => s.slug === slug);
 }
 
 export function getPaydayLegalStates(): StateInfo[] {
+  const focus = siteConfig.niche.focusStates;
+  if (focus.length > 0) {
+    return STATES.filter((s) => s.paydayLegal && focus.includes(s.slug));
+  }
   return STATES.filter((s) => s.paydayLegal);
 }
 

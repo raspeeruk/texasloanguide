@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/seo/metadata";
-import { getAllStates } from "@/lib/data/states";
+import { getSiteStates } from "@/lib/data/states";
+import { siteConfig } from "@/lib/site.config";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
+const isSingleState = siteConfig.niche.focusStates.length === 1;
+const focusStateName = isSingleState
+  ? getSiteStates()[0]?.name ?? "Your State"
+  : null;
+
 export const metadata: Metadata = createMetadata({
-  title: "Loan Regulations by State",
-  description:
-    "Browse payday loan and personal loan regulations for all 50 US states. See APR caps, maximum loan amounts, and lending rules for your state.",
+  title: isSingleState
+    ? `${focusStateName} Loan Regulations & Lending Rules`
+    : "Loan Regulations by State",
+  description: isSingleState
+    ? `${focusStateName} payday loan and personal loan regulations. See APR caps, maximum loan amounts, and lending rules.`
+    : "Browse payday loan and personal loan regulations for all 50 US states. See APR caps, maximum loan amounts, and lending rules for your state.",
   path: "/states",
 });
 
 export default function StatesPage() {
-  const states = getAllStates().filter((s) => s.abbreviation !== "DC");
+  const states = getSiteStates().filter((s) => s.abbreviation !== "DC");
   const legalCount = states.filter((s) => s.paydayLegal).length;
 
   return (

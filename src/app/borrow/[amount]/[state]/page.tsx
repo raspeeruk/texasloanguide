@@ -8,7 +8,7 @@ import {
 } from "@/lib/data/loanAmounts";
 import {
   getStateBySlug,
-  getPublishedStateSlugs,
+  getSiteStateSlugs,
   formatApr,
   formatCurrency as formatStateCurrency,
 } from "@/lib/data/states";
@@ -29,7 +29,7 @@ interface Props {
 
 export async function generateStaticParams() {
   const amounts = getPublishedLoanAmountSlugs();
-  const states = getPublishedStateSlugs();
+  const states = getSiteStateSlugs();
 
   return amounts.flatMap((amount) =>
     states.map((state) => ({ amount, state }))

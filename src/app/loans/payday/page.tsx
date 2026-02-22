@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site.config";
-import { getPaydayLegalStates, getAllStates } from "@/lib/data/states";
+import { getPaydayLegalStates, getSiteStates } from "@/lib/data/states";
 import { getPublishedLoanAmounts } from "@/lib/data/loanAmounts";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BLUFSummary } from "@/components/content/BLUFSummary";
@@ -64,7 +64,7 @@ const faqs = [
 
 export default function PaydayLoansPage() {
   const legalStates = getPaydayLegalStates();
-  const allStates = getAllStates();
+  const allStates = getSiteStates();
   const illegalStates = allStates.filter((s) => !s.paydayLegal);
   const amounts = getPublishedLoanAmounts().filter((a) => a.amount <= 1000);
 

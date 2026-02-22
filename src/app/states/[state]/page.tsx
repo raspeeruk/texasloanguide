@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getStateBySlug,
-  getPublishedStateSlugs,
+  getSiteStateSlugs,
   formatApr,
   formatCurrency,
 } from "@/lib/data/states";
@@ -21,7 +21,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getPublishedStateSlugs().map((state) => ({ state }));
+  return getSiteStateSlugs().map((state) => ({ state }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

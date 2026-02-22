@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPublishedLoanAmounts } from "@/lib/data/loanAmounts";
-import { getPublishedStates, getAllStates } from "@/lib/data/states";
+import { getSiteStates } from "@/lib/data/states";
 import { getPublishedGuides } from "@/lib/data/guides";
 import { SITE_URL, AUTHORS } from "@/lib/site.config";
 
@@ -17,8 +17,8 @@ const AUTHOR_SLUGS = AUTHORS.map((a) => a.slug);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const loanAmounts = getPublishedLoanAmounts();
-  const publishedStates = getPublishedStates();
-  const allStates = getAllStates().filter((s) => s.abbreviation !== "DC");
+  const siteStates = getSiteStates();
+  const statesNoDC = siteStates.filter((s) => s.abbreviation !== "DC");
 
   // Core pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Amount + state pages — published amounts x published states
   const amountStatePages: MetadataRoute.Sitemap = loanAmounts.flatMap((la) =>
-    publishedStates.map((state) => ({
+    siteStates.map((state) => ({
       url: `${SITE_URL}/borrow/${la.slug}/${state.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -71,8 +71,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // State hub pages — always include all states (the directory is useful)
-  const stateHubPages: MetadataRoute.Sitemap = allStates.map((state) => ({
+  // State hub pages — only site-relevant states
+  const stateHubPages: MetadataRoute.Sitemap = statesNoDC.map((state) => ({
     url: `${SITE_URL}/states/${state.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

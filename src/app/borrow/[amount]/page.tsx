@@ -6,7 +6,7 @@ import {
   getPublishedLoanAmountSlugs,
   calculateRepayment,
 } from "@/lib/data/loanAmounts";
-import { getAllStates, getPaydayLegalStates } from "@/lib/data/states";
+import { getSiteStates, getPaydayLegalStates } from "@/lib/data/states";
 import { createMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/site.config";
 import { LoanSchema } from "@/components/seo/LoanSchema";
@@ -44,7 +44,7 @@ export default async function LoanAmountPage({ params }: Props) {
   if (!loan) notFound();
 
   const legalStates = getPaydayLegalStates();
-  const allStates = getAllStates();
+  const allStates = getSiteStates();
 
   // Calculate repayment examples
   const lowExample = calculateRepayment(loan.amount, loan.minApr, loan.minTermMonths);
