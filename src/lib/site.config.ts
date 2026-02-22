@@ -65,8 +65,8 @@ export interface SiteConfig {
 
   // Analytics (populated after site setup)
   analytics: {
-    gaId: string; // GA4 Measurement ID (G-XXXXXXX)
-    gscProperty: string; // Search Console property
+    gaId: "G-ZKQM2N8QFX",
+    gscProperty: "sc-domain:texasloanguide.com",
   };
 
   // Cross-linking targets (populated by factory)
